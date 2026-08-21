@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const roles = [
   { period: "2025 — 2026", company: "Oracle", role: "Engineering Manager · AI Data Platform", summary: "Led the connectivity layer that brings enterprise data into Oracle 23ai—turning a complex integration surface into a reliable, compliant platform.", wins: ["14 production connectors", "70% lower read latency", "85%+ test coverage", "FIPS 140-3 certified"] },
@@ -9,7 +10,6 @@ const roles = [
 ];
 
 const products = [
-  { name: "Isha — Smart Helpdesk Assistant", href: "https://github.com/utkarshmankad/isha-indigo-rag", meta: "Flagship AI product", description: "A production-minded RAG assistant for airline passenger queries, combining hybrid retrieval, confidence-aware responses, citations, memory, multilingual support, and an embeddable API surface.", featured: true, tags: ["LangGraph", "BM25 + Qdrant", "RAGAS", "FastAPI", "Multi-tenant"] },
   { name: "Oracle AI Data Platform", href: "https://www.oracle.com/ai-data-platform/", meta: "Enterprise AI", description: "A secure connectivity layer that turns fragmented enterprise data into an AI-ready foundation." },
   { name: "Reliance B2B Commerce", href: "https://www.fynd.com/", meta: "Commerce at scale", description: "The platform backbone behind nationwide B2B journeys for millions of merchants and millions of SKUs." },
   { name: "Namma Metro", href: "https://play.google.com/store/apps/details?id=com.aum.nammametro", meta: "Public mobility", description: "Bengaluru’s official metro companion—putting routes, fares, and travel information in 1.2M+ pockets." },
@@ -17,6 +17,7 @@ const products = [
 ];
 
 const projects = [
+  { name: "Isha — Smart Helpdesk Assistant", href: "https://github.com/utkarshmankad/isha-indigo-rag", tech: "LangGraph / RAG", description: "A production-minded airline helpdesk assistant with hybrid retrieval, confidence-aware cited answers, memory, multilingual support, and an embeddable API." },
   { name: "Job Tracker", href: "https://github.com/utkarshmankad/job-tracker", tech: "Python / React", description: "A private, local-first command centre that turns job emails into a live application pipeline." },
   { name: "JD Fit Checker", href: "https://jd-fit-checker.vercel.app", tech: "Next.js / AI", description: "An AI screening copilot that scores roles, exposes gaps, and helps job seekers focus their search." },
   { name: "ReportAPI", href: "https://reportapi.vercel.app", tech: "TypeScript / Next.js", description: "A modern web product for creating and sharing useful reports without the usual reporting friction." },
@@ -43,11 +44,11 @@ export default function Home() {
   return <main id="top">
     <nav className="nav shell" aria-label="Primary navigation"><a className="brand" href="#top"><span>U</span>M_</a><div className="nav-links"><a href="#work">01.Work</a><a href="#products">02.Products</a><a href="#projects">03.Builds</a><a href="#open-source">04.OSS</a><a href="#contact">05.Contact</a></div><button className="theme-button" onClick={() => setDark(!dark)} aria-label={`Switch to ${dark ? "light" : "dark"} theme`}><span aria-hidden>{dark ? "☼" : "◐"}</span>{dark ? "Light" : "Dark"}</button></nav>
 
-    <header className="hero shell"><div className="hero-signal"><span>SYS.STATUS</span><b>ONLINE</b><i /></div><p className="eyebrow">Engineering leader / Systems thinker / Builder</p><h1>Building teams.<br />Engineering <em>impact.</em></h1><div className="hero-bottom"><p>16 years turning complex systems into dependable platforms—from enterprise AI and commerce at national scale to public digital infrastructure.</p><div className="command"><span>$</span><a href="#work">explore --work</a><i>↵</i></div></div><div className="metrics"><article><small>EXP_YRS</small><b>16</b></article><article><small>ENGINEERS_LED</small><b>20</b></article><article><small>TEAMS_BUILT</small><b>04</b></article><article><small>MERCHANTS_SERVED</small><b>5M+</b></article></div></header>
+    <header className="hero shell"><div className="hero-intro"><div><div className="hero-signal"><span>SYS.STATUS</span><b>ONLINE</b><i /></div><p className="eyebrow">Engineering leader / Systems thinker / Builder</p></div><figure className="profile-photo"><Image src="/utkarsh.jpg" alt="Utkarsh Mankad" width={72} height={72} priority /><figcaption>UTKARSH.JPG</figcaption></figure></div><h1>Building teams.<br />Engineering <em>impact.</em></h1><div className="hero-bottom"><p>16 years turning complex systems into dependable platforms—from enterprise AI and commerce at national scale to public digital infrastructure.</p><div className="command"><span>$</span><a href="#work">explore --work</a><i>↵</i></div></div><div className="metrics"><article><small>EXP_YRS</small><b>16</b></article><article><small>ENGINEERS_LED</small><b>20</b></article><article><small>TEAMS_BUILT</small><b>04</b></article><article><small>MERCHANTS_SERVED</small><b>5M+</b></article></div></header>
 
     <section className="section shell" id="work"><SectionTitle number="01" label="Career runtime">Systems that operate at scale.</SectionTitle><div className="timeline">{roles.map((role, index) => <article className="timeline-row" key={role.company}><div className="node">0{index + 1}</div><time>{role.period}</time><div><h3>{role.company}</h3><p className="role-title">{role.role}</p><p>{role.summary}</p><ul>{role.wins.map(win => <li key={win}>{win}</li>)}</ul></div></article>)}</div></section>
 
-    <section className="section shell" id="products"><SectionTitle number="02" label="Products built">AI products, cloud platforms, and public infrastructure.</SectionTitle><div className="product-grid">{products.map((product, index) => <a className={product.featured ? "featured-product" : ""} href={product.href} target="_blank" rel="noreferrer" key={product.name}><small>0{index + 1} / {product.meta}</small><h3>{product.name}</h3><p>{product.description}</p>{product.tags && <ul>{product.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>}<span>Open project ↗</span></a>)}</div></section>
+    <section className="section shell" id="products"><SectionTitle number="02" label="Products built">AI products, cloud platforms, and public infrastructure.</SectionTitle><div className="product-grid">{products.map((product, index) => <a href={product.href} target="_blank" rel="noreferrer" key={product.name}><small>0{index + 1} / {product.meta}</small><h3>{product.name}</h3><p>{product.description}</p><span>Open project ↗</span></a>)}</div></section>
 
     <section className="section shell" id="projects"><SectionTitle number="03" label="Independent builds">Products, not placeholders.</SectionTitle><div className="project-grid">{projects.map(project => <a href={project.href} target="_blank" rel="noreferrer" key={project.name}><span className="project-tech">{project.tech}</span><h3>{project.name}</h3><p>{project.description}</p><b>Explore build ↗</b></a>)}</div></section>
 
