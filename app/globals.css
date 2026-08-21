@@ -32,3 +32,7 @@ body{font-size:13px}.shell{width:min(1120px,calc(100% - 44px))}.hero{padding-top
 .section-title h2{font-size:clamp(23px,2.6vw,31px)}
 footer h2{font-size:clamp(31px,3.8vw,44px)}
 @media(max-width:820px){.hero h1{font-size:clamp(30px,8vw,42px)}.section-title h2{font-size:clamp(21px,5.5vw,28px)}footer h2{font-size:clamp(29px,9vw,42px)}}
+
+/* Compact identity marker and balanced four-card grids. */
+.hero-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}.hero-intro .hero-signal{margin-bottom:22px}.profile-photo{flex:none;margin:0;padding:5px;border:1px solid var(--line);background:var(--surface)}.profile-photo img{display:block;width:72px;height:72px;object-fit:cover;filter:grayscale(35%) contrast(1.05)}.profile-photo figcaption{margin-top:5px;color:var(--muted);font:7px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-align:center}.product-grid,.project-grid{grid-template-columns:repeat(2,1fr)}.product-grid a:nth-child(n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.product-grid a:nth-child(2n){border-right:0}.product-grid a:nth-last-child(-n+2){border-bottom:0}.project-grid a:first-child{background:linear-gradient(145deg,color-mix(in srgb,var(--cyan) 10%,var(--surface)),var(--surface))}
+@media(max-width:560px){.profile-photo img{width:58px;height:58px}.profile-photo figcaption{display:none}.product-grid,.project-grid{grid-template-columns:1fr}.product-grid a:nth-child(n){border-right:0;border-bottom:1px solid var(--line)}.product-grid a:last-child{border-bottom:0}}
