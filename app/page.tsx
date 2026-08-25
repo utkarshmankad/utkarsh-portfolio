@@ -31,6 +31,7 @@ const contributions = [
 ];
 
 const articles = [
+  { title: "JobSnob: Building Fast AI and RAG JD Screening Pipelines", href: "https://www.linkedin.com/pulse/jobsnob-building-fast-ai-rag-jd-screening-pipelines-utkarsh-mankad-6hx2c", date: "Aug 25, 2026", topic: "AI Systems / RAG", description: "How a two-speed AI and RAG architecture replaced per-job LLM calls with cached semantic context and deterministic local scoring—cutting screening latency while preserving explainable results." },
   { title: "Automated Canary Deployments: Strategies for Safer Software Releases", href: "https://www.linkedin.com/pulse/automated-canary-deployments-strategies-safer-software-utkarsh-mankad-jgu5c", date: "Apr 23, 2025", topic: "DevOps / Reliability", description: "A practical guide to progressive delivery, metric-driven promotion, automated rollback, and safer production releases." },
   { title: "Unlocking the Power of Big Data: Understanding the Architecture of Spark Connectors", href: "https://www.linkedin.com/pulse/unlocking-power-big-data-understanding-architecture-spark-mankad-6bawe", date: "Apr 18, 2025", topic: "Data Engineering", description: "An architectural walkthrough of how Spark connectors bridge distributed applications and diverse external data sources." },
 ];
