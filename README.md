@@ -30,6 +30,11 @@ npm run test:coverage
 
 The GitHub Actions workflow separates responsibility into code quality, unit tests with a hard 70% coverage threshold, production-build integration tests, and an overall release gate. It runs on pull requests and pushes to `develop` and `main`.
 
+## Phase 3 status
+
+- Complete: static rendering, isolated client controls, typed content, consolidated CSS, robots, sitemap, web manifest, favicon metadata, structured data, and an optimized social image.
+- Pending: select and configure a custom domain, then add its canonical URL after DNS and Vercel ownership are confirmed.
+
 ## Stack
 
-React 19, TypeScript, Vinext/Next.js-compatible routing, Cloudflare-compatible server output, and GitHub Actions. The source is also suitable for Vercel; use the standard build command for the selected Next.js adapter when importing the repository.
+Next.js 16, React 19, TypeScript, Vercel, and GitHub Actions.
