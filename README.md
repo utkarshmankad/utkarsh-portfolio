@@ -16,6 +16,10 @@ npm run lint
 npm run test:unit
 npm run test:integration
 npm run test:coverage
+npm run test:e2e
+npm run test:lighthouse
+npm run test:links
+npm run test:security
 ```
 
 ## Branching and release strategy
@@ -34,6 +38,14 @@ The GitHub Actions workflow separates responsibility into code quality, unit tes
 
 - Complete: static rendering, isolated client controls, typed content, consolidated CSS, robots, sitemap, web manifest, favicon metadata, structured data, and an optimized social image.
 - Pending: select and configure a custom domain, then add its canonical URL after DNS and Vercel ownership are confirmed.
+
+## Phase 4 quality and measurement
+
+- Playwright covers desktop and mobile behavior, navigation, theme persistence, layout overflow, and automated WCAG checks with axe-core.
+- Lighthouse enforces minimum scores of 80 performance, 95 accessibility, 90 best practices, and 95 SEO.
+- CI includes dependency auditing; CodeQL and Dependabot provide continuing security maintenance.
+- External portfolio links are validated every Monday and can also be checked manually.
+- Vercel Web Analytics and Speed Insights collect privacy-conscious traffic and field-performance data. Conversion events cover résumé downloads, contact actions, projects, products, articles, open-source contributions, and social links.
 
 ## Stack
 

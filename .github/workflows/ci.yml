@@ -1,21 +1,21 @@
 name: Portfolio CI
 on:
   pull_request:
-    branches: [main, develop]
+    branches: [develop]
   push:
     branches: [main, develop]
 permissions:
   contents: read
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   code-quality:
     name: Code quality
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: npm run lint
@@ -23,8 +23,8 @@ jobs:
     name: Unit tests and 70% coverage gate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: npm run test:coverage
@@ -32,16 +32,58 @@ jobs:
     name: Production-build integration tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: npm run test:integration
+  browser-tests:
+    name: Browser and accessibility tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: playwright-report, path: playwright-report, retention-days: 7 }
+  lighthouse:
+    name: Lighthouse quality budgets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Enforce Lighthouse budgets
+        run: |
+          npm run start -- -p 3193 > /tmp/portfolio-next.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid"' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:3193 > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:lighthouse
+  dependency-audit:
+    name: Dependency security audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run test:security
   overall-check:
     name: Overall release check
     if: always()
-    needs: [code-quality, unit-tests, integration-tests]
+    needs: [code-quality, unit-tests, integration-tests, browser-tests, lighthouse, dependency-audit]
     runs-on: ubuntu-latest
     steps:
       - name: Require every CI role to pass
-        run: test '${{ needs.code-quality.result }}' = success && test '${{ needs.unit-tests.result }}' = success && test '${{ needs.integration-tests.result }}' = success
+        run: test '${{ needs.code-quality.result }}' = success && test '${{ needs.unit-tests.result }}' = success && test '${{ needs.integration-tests.result }}' = success && test '${{ needs.browser-tests.result }}' = success && test '${{ needs.lighthouse.result }}' = success && test '${{ needs.dependency-audit.result }}' = success
