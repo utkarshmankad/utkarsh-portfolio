@@ -11,6 +11,7 @@ export function AnalyticsEvents() {
       const eventName = target.dataset.analyticsEvent;
       if (!eventName) return;
       track(eventName, { label: target.dataset.analyticsLabel ?? "unknown" });
+      if (eventName === "resume_download") void fetch("/api/analytics/resume", { method: "POST", keepalive: true });
     }
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);

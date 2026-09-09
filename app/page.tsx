@@ -2,6 +2,7 @@ import Image from "next/image";
 import { articles, contributions, leadershipCompetencies, products, projects, roles } from "./content";
 import { SectionTitle } from "./components/section-title";
 import { SiteControls } from "./components/site-controls";
+import { LiveAnalytics } from "./components/live-analytics";
 import { siteConfig, siteUrl } from "./site";
 
 const jsonLd = {
@@ -26,6 +27,8 @@ export default function Home() {
       <div className="hero-bottom"><p>{siteConfig.description}</p><div className="hero-actions" aria-label="Portfolio actions"><a className="primary-action" href="#work" data-analytics-event="cta_click" data-analytics-label="selected_work"><span aria-hidden>$</span> View selected work</a><a href="/utkarsh-mankad-resume.pdf" download data-analytics-event="resume_download" data-analytics-label="hero">Download résumé ↓</a><a href="#contact" data-analytics-event="cta_click" data-analytics-label="contact">Contact me ↘</a></div></div>
       <div className="metrics"><article><small>EXP_YRS</small><b>16</b></article><article><small>ENGINEERS_LED</small><b>20</b></article><article><small>TEAMS_BUILT</small><b>04</b></article><article><small>MERCHANTS_SERVED</small><b>5M+</b></article></div>
     </header>
+
+    <LiveAnalytics />
 
     <section className="section shell" id="work" aria-labelledby="work-title"><SectionTitle number="01" label="Career runtime" id="work-title">Systems that operate at scale.</SectionTitle><div className="timeline">{roles.map((role, index) => <article className="timeline-row" key={role.company}><div className="node">0{index + 1}</div><time>{role.period}</time><div><h3>{role.company}</h3><p className="role-title">{role.role}</p><p>{role.summary}</p><ul className="role-wins">{role.wins.map(win => <li key={win}>{win}</li>)}</ul><div className="role-stack"><span>TECH_STACK[]</span><ul>{role.tech.map(technology => <li key={technology}>{technology}</li>)}</ul></div></div></article>)}</div></section>
 

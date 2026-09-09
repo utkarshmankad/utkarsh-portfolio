@@ -2,11 +2,21 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { articles, contributions, products, projects, roles } from "../app/content";
 import { siteConfig, siteUrl } from "../app/site";
+import { isLikelyBot, regionFromCountry, visibleRegions } from "../app/analytics";
 
 test("portfolio collections contain unique named entries", () => {
   for (const collection of [products, projects]) assert.equal(new Set(collection.map((item) => item.name)).size, collection.length);
   assert.equal(new Set(articles.map((item) => item.title)).size, articles.length);
   assert.equal(new Set(roles.map((item) => item.company)).size, roles.length);
+});
+
+test("analytics helpers keep location data coarse and suppress small samples", () => {
+  assert.equal(regionFromCountry("IN"), "India");
+  assert.equal(regionFromCountry("US"), "North America");
+  assert.equal(regionFromCountry("XX"), "Other");
+  assert.equal(isLikelyBot("Mozilla/5.0"), false);
+  assert.equal(isLikelyBot("Googlebot/2.1"), true);
+  assert.deepEqual(visibleRegions({ India: 8, Europe: 1, Other: 3 }), [{ region: "India", visits: 8 }, { region: "Other", visits: 3 }]);
 });
 
 test("public links use secure or intentional contact protocols", () => {
