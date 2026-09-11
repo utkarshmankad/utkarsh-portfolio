@@ -20,17 +20,17 @@ export const roles: Role[] = [
 ];
 
 export const products = [
-  { name: "Oracle AI Data Platform", href: "https://www.oracle.com/ai-data-platform/", meta: "Enterprise AI", description: "A secure connectivity layer that turns fragmented enterprise data into an AI-ready foundation." },
-  { name: "Reliance B2B Commerce", href: "https://www.fynd.com/", meta: "Commerce at scale", description: "The platform backbone behind nationwide B2B journeys for millions of merchants and millions of SKUs." },
-  { name: "Namma Metro", href: "https://play.google.com/store/apps/details?id=com.aum.nammametro", meta: "Public mobility", description: "Bengaluru’s official metro companion—putting routes, fares, and travel information in 1.2M+ pockets." },
-  { name: "Smart Water Network", href: "https://www.cdac.in/", meta: "Urban infrastructure", description: "An IoT data platform that made 8,000 sensors across 40 locations observable and actionable." },
+  { name: "Oracle AI Data Platform", href: "https://www.oracle.com/ai-data-platform/", meta: "Enterprise AI", description: "I led the connectivity pod responsible for 14 production ingestion connectors, including the VECTOR and JSON CRUD foundations for Oracle 23ai." },
+  { name: "Reliance B2B Commerce", href: "https://www.fynd.com/", meta: "Commerce at scale", description: "I built the engineering organisation and integration platform behind B2B journeys serving more than five million active merchants." },
+  { name: "Namma Metro", href: "https://play.google.com/store/apps/details?id=com.aum.nammametro", meta: "Public mobility", description: "I helped take Bengaluru’s official metro companion from a public-service idea to an app used by more than 1.2 million commuters." },
+  { name: "Smart Water Network", href: "https://www.cdac.in/", meta: "Urban infrastructure", description: "I led delivery of an IoT monitoring platform covering 8,000 sensors across 40 locations, giving operations teams a usable view of the network." },
 ];
 
 export const projects = [
-  { name: "Isha — Smart Helpdesk Assistant", href: "https://github.com/utkarshmankad/isha-indigo-rag", tech: "LangGraph / RAG", description: "A production-minded airline helpdesk assistant with hybrid retrieval, confidence-aware cited answers, memory, multilingual support, and an embeddable API." },
-  { name: "Job Tracker", href: "https://github.com/utkarshmankad/job-tracker", tech: "Python / React", description: "A private, local-first command centre that turns job emails into a live application pipeline." },
-  { name: "JD Fit Checker", href: "https://jd-fit-checker.vercel.app", tech: "Next.js / AI", description: "An AI screening copilot that scores roles, exposes gaps, and helps job seekers focus their search." },
-  { name: "ReportAPI", href: "https://reportapi.vercel.app", tech: "TypeScript / Next.js", description: "A modern web product for creating and sharing useful reports without the usual reporting friction." },
+  { name: "Isha — Smart Helpdesk Assistant", href: "https://github.com/utkarshmankad/isha-indigo-rag", tech: "LangGraph / RAG", description: "I built Isha to test what a trustworthy airline support assistant needs in practice: hybrid retrieval, cited answers, confidence checks, memory, multilingual support, and a clean API." },
+  { name: "Job Tracker", href: "https://github.com/utkarshmankad/job-tracker", tech: "Python / React", description: "I wanted one private place to follow a job search, so I built a local-first tool that turns incoming job emails into an application pipeline." },
+  { name: "JD Fit Checker", href: "https://jd-fit-checker.vercel.app", tech: "Next.js / AI", description: "I built this to answer a practical question quickly: is a role worth pursuing? It scores the match, explains gaps, and keeps the decision visible." },
+  { name: "ReportAPI", href: "https://reportapi.vercel.app", tech: "TypeScript / Next.js", description: "An experiment in making report creation and sharing simpler, with the workflow reduced to the parts people actually need." },
 ];
 
 export const contributions = [

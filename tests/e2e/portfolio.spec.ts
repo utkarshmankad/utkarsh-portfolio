@@ -6,10 +6,17 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("renders the portfolio without horizontal overflow", async ({ page }) => {
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Building teams");
-  await expect(page.getByRole("link", { name: "Download résumé" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("I’m Utkarsh Mankad");
+  await expect(page.getByRole("link", { name: "Download my résumé" }).first()).toBeVisible();
   await expect(page.locator("#work")).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+});
+
+test("serves a useful custom not-found page", async ({ page }) => {
+  const response = await page.goto("/not-a-real-page");
+  expect(response?.status()).toBe(404);
+  await expect(page.getByRole("heading", { name: "This path doesn’t lead anywhere." })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Return home" })).toBeVisible();
 });
 
 test("theme selection persists across reloads", async ({ page }) => {
