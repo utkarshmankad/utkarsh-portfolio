@@ -1,0 +1,23 @@
+# Utkarsh Mankad
+
+> Portfolio of an engineering leader focused on AI and data platforms, distributed systems, and teams operating at scale.
+
+Canonical site: https://utkarsh-portfolio-five-delta.vercel.app
+Language: English
+
+## Primary sections
+
+- Experience: leadership roles at Oracle, Fynd / Reliance Industries, and CDAC / Government of India.
+- Products: Oracle AI Data Platform, Reliance B2B Commerce, Namma Metro, and Smart Water Network.
+- Independent work: Isha Smart Helpdesk Assistant, Job Tracker, JD Fit Checker, and ReportAPI.
+- Open source: contributions to AutoMQ, RisingWave, and FIWARE.
+- Writing: practical articles about AI/RAG systems, canary deployments, and Spark connector architecture.
+
+## Profiles
+
+- GitHub: https://github.com/utkarshmankad
+- LinkedIn: https://www.linkedin.com/in/utkarsh-mankad/
+
+## Contact
+
+- Email: utkarsh.mankad@gmail.com

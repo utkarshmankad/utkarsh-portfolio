@@ -24,13 +24,13 @@ export function LiveAnalytics() {
     return () => { active = false; };
   }, []);
 
-  const numbers = [["PROFILE_VISITS", stats.visits], ["UNIQUE_BROWSERS", stats.uniqueVisits], ["RETURN_VISITS", stats.returningVisits], ["RESUME_DOWNLOADS", stats.resumeDownloads]] as const;
+  const numbers = [["Profile visits", stats.visits], ["Unique browsers", stats.uniqueVisits], ["Return visits", stats.returningVisits], ["Résumé downloads", stats.resumeDownloads]] as const;
 
   return <section className="analytics-panel shell" aria-labelledby="analytics-title">
-    <div className="analytics-heading"><div><p><span>LIVE</span> Portfolio telemetry</p><h2 id="analytics-title">Reach, measured without surveillance.</h2></div><small>{loaded && stats.configured ? "AGGREGATES · 60S REFRESH" : "DATA STORE PENDING"}</small></div>
+    <div className="analytics-heading"><div><p>Portfolio visits</p><h2 id="analytics-title">A small, anonymous snapshot of this site’s reach.</h2></div><small>{loaded && stats.configured ? "Updated every minute" : "Waiting for data"}</small></div>
     <div className="analytics-grid">
       <div className="analytics-numbers">{numbers.map(([label, value]) => <article key={label}><small>{label}</small><b>{loaded && stats.configured ? value.toLocaleString("en-IN") : "—"}</b></article>)}</div>
-      <div className="analytics-regions"><small>REGION_SIGNAL[]</small>{stats.regions.length ? <ul>{stats.regions.slice(0, 5).map(({ region, visits }) => <li key={region}><span>{region}</span><b>{visits.toLocaleString("en-IN")}</b></li>)}</ul> : <p>{loaded && stats.configured ? "Regions appear after two visits." : "Connect the analytics store to activate live counters."}</p>}</div>
+      <div className="analytics-regions"><small>Regions</small>{stats.regions.length ? <ul>{stats.regions.slice(0, 5).map(({ region, visits }) => <li key={region}><span>{region}</span><b>{visits.toLocaleString("en-IN")}</b></li>)}</ul> : <p>{loaded && stats.configured ? "Regions appear after two visits." : "Visit data is temporarily unavailable."}</p>}</div>
     </div>
     <p className="analytics-note">Anonymous browser-level counts only. No IP addresses or individual location histories are stored. Return visits are repeat loads from a browser that retains the first-party cookie.</p>
   </section>;
