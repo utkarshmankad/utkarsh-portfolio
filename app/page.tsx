@@ -10,7 +10,7 @@ const jsonLd = {
   "@graph": [
     { "@type": "Person", "@id": `${siteUrl}/#person`, name: siteConfig.name, givenName: "Utkarsh", familyName: "Mankad", url: siteUrl, image: `${siteUrl}/utkarsh.jpg`, jobTitle: "Senior Engineering Leader", description: siteConfig.description, address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" }, sameAs: [siteConfig.github, siteConfig.linkedin], knowsAbout: ["AI data platforms", "Distributed systems", "Engineering leadership", "Cloud platforms", "Data engineering"] },
     { "@type": "WebSite", "@id": `${siteUrl}/#website`, url: siteUrl, name: `${siteConfig.name} Portfolio`, description: siteConfig.description, author: { "@id": `${siteUrl}/#person` }, inLanguage: "en-IN" },
-    { "@type": "ProfilePage", "@id": `${siteUrl}/#profile`, url: siteUrl, name: siteConfig.title, description: siteConfig.description, dateModified: "2026-11-11", isPartOf: { "@id": `${siteUrl}/#website` }, mainEntity: { "@id": `${siteUrl}/#person` }, inLanguage: "en-IN" },
+    { "@type": "ProfilePage", "@id": `${siteUrl}/#profile`, url: siteUrl, name: siteConfig.title, description: siteConfig.description, dateModified: "2026-11-11T23:07:38+05:30", isPartOf: { "@id": `${siteUrl}/#website` }, mainEntity: { "@id": `${siteUrl}/#person` }, inLanguage: "en-IN" },
     ...articles.map((article) => ({ "@type": "Article", headline: article.title, url: article.href, datePublished: article.publishedAt, author: { "@id": `${siteUrl}/#person` }, description: article.description })),
     ...projects.map((project) => ({ "@type": "SoftwareSourceCode", name: project.name, codeRepository: project.href, description: project.description, author: { "@id": `${siteUrl}/#person` } })),
   ],
