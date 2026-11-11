@@ -15,7 +15,7 @@ try{
  assert.match(html,/data-analytics-event="resume_download"/);assert.match(html,/data-analytics-event="project_click"/);assert.match(html,/data-analytics-event="article_click"/);
  assert.match(html,/rel="canonical" href="https:\/\/utkarsh-portfolio-five-delta\.vercel\.app\/?"/);assert.match(html,/name="robots" content="index, follow/);assert.match(html,/name="googlebot" content="index, follow/);
  assert.match(html,/name="google-site-verification" content="5hQQQd-XAePUmZGWkRfyLpxEFfwx6kfbHrRljz0K9AY"/);
- assert.match(html,/og:image/);assert.match(html,/og-techno\.jpg/);assert.match(html,/og:locale/);assert.match(html,/summary_large_image/);assert.match(html,/application\/ld\+json/);assert.match(html,/SoftwareSourceCode/);assert.match(html,/ProfilePage/);assert.match(html,/schema\.org/);
+ assert.match(html,/og:image/);assert.match(html,/og-techno\.jpg/);assert.match(html,/og:locale/);assert.match(html,/summary_large_image/);assert.match(html,/application\/ld\+json/);assert.match(html,/SoftwareSourceCode/);assert.match(html,/ProfilePage/);assert.match(html,/"dateModified":"2026-11-11T23:07:38\+05:30"/);assert.match(html,/schema\.org/);
  for(const [path,pattern] of [["/robots.txt",/sitemap\.xml/],["/sitemap.xml",/utkarsh-portfolio-five-delta\.vercel\.app/],["/manifest.webmanifest",/Utkarsh Mankad/],["/llms.txt",/engineering leader/]]){const asset=await fetch(`http://localhost:${port}${path}`);assert.equal(asset.status,200);assert.match(await asset.text(),pattern)}
  const missing=await fetch(`http://localhost:${port}/not-a-real-page`);assert.equal(missing.status,404);assert.match(await missing.text(),/This path doesn’t lead anywhere/);
  console.log("Integration checks passed");
