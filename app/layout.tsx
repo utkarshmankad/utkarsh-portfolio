@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name, url: siteConfig.linkedin }],
   creator: siteConfig.name,
   category: "technology",
+  verification: { google: "5hQQQd-XAePUmZGWkRfyLpxEFfwx6kfbHrRljz0K9AY" },
   alternates: { canonical: "/" },
   robots: {
     index: true,
