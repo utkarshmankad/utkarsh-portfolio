@@ -13,9 +13,21 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name, url: siteConfig.linkedin }],
   creator: siteConfig.name,
   category: "technology",
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }], shortcut: "/favicon.svg", apple: "/favicon.svg" },
   manifest: "/manifest.webmanifest",
-  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteUrl, siteName: `${siteConfig.name} Portfolio`, images: [{ url: "/og-techno.jpg", width: 1200, height: 630, alt: "Utkarsh Mankad — Engineering Leader" }], type: "website" },
+  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteUrl, siteName: `${siteConfig.name} Portfolio`, locale: "en_IN", images: [{ url: "/og-techno.jpg", width: 1200, height: 630, alt: "Utkarsh Mankad — Engineering Leader" }], type: "website" },
   twitter: { card: "summary_large_image", title: siteConfig.title, description: siteConfig.description, images: ["/og-techno.jpg"] },
 };
 

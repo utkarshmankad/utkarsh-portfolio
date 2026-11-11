@@ -24,6 +24,14 @@ test("public links use secure or intentional contact protocols", () => {
   for (const href of [...links, siteConfig.github, siteConfig.linkedin, siteUrl]) assert.equal(new URL(href).protocol, "https:");
 });
 
+test("search metadata identifies the portfolio owner clearly", () => {
+  assert.match(siteConfig.title, /^Utkarsh Mankad/);
+  assert.match(siteConfig.description, /^Utkarsh Mankad/);
+  assert.ok(siteConfig.title.length <= 65);
+  assert.ok(siteConfig.description.length >= 120 && siteConfig.description.length <= 160);
+  assert.equal(siteConfig.location, "Bengaluru, India");
+});
+
 test("career and project evidence is complete", () => {
   for (const role of roles) { assert.ok(role.summary.length > 80); assert.ok(role.wins.length >= 4); assert.ok(role.tech.length >= 5); }
   for (const project of projects) assert.ok(project.description.length > 60);
